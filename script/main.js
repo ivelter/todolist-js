@@ -31,11 +31,34 @@ function updateNewTask() {
 }
 
 function moveTaskUp(taskID) {
-
+    index = getTaskIndexInList(taskID)
+    currentTask = document.getElementById("task"+taskID)
+    upperTask = currentTask.previousElementSibling
+    if(upperTask == null) {
+        return
+    }
+    swapNodes(upperTask, currentTask)
 }
 
 function moveTaskDown(taskID) {
-    
+    index = getTaskIndexInList(taskID)
+    currentTask = document.getElementById("task"+taskID)
+    lowerTask = currentTask.nextElementSibling
+    if(lowerTask == null) {
+        return
+    }
+    swapNodes(currentTask, lowerTask)
+}
+
+function swapNodes(a, b) {
+    var aParent = a.parentNode;
+    var bParent = b.parentNode;
+    var aHolder = document.createElement("div");
+    var bHolder = document.createElement("div");
+    aParent.replaceChild(aHolder,a);
+    bParent.replaceChild(bHolder,b);
+    aParent.replaceChild(b,aHolder);
+    bParent.replaceChild(a,bHolder);    
 }
 
 function deleteTask(taskID) {
@@ -44,6 +67,14 @@ function deleteTask(taskID) {
         if(taskList[i].taskID == taskID) {
             taskList.pop(i)
             return
+        }
+    }
+}
+
+function getTaskIndexInList(taskID) {
+    for(i = 0; i < taskList.length; i++) {
+        if(taskList[i].taskID == taskID) {
+            return i
         }
     }
 }
