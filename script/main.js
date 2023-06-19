@@ -3,18 +3,31 @@ var currentTaskID = 0
 
 Array.prototype.pushTask = (...args) => {
     this.push(...args)
-    updateTasks()
+    updateNewTask()
 }
 
 function addTask() {
     newTask = {taskID:currentTaskID, taskDescription: "", done:false}
     currentTaskID++
     taskList.push(newTask)
-    updateTasks()
+    updateNewTask()
 }
 
-function updateTasks() {
-    // Write code to update task list on HTML side here
+function updateNewTask() {
+    newTask = taskList[taskList.length-1]
+    newNode = `
+        <input class="checkbox" type="checkbox" id="task${newTask.taskID}check">
+        <textarea class="textInput" type="textarea" id="task${newTask.taskID}text" wrap="hard" maxlength="38" placeholder="Task Description">${newTask.taskDescription}</textarea>
+        <button class="upArrow" type="button">⬆️</button>
+        <button class="downArrow" type="button">⬇️</button>
+        <button class="trashButton" type="button">🗑️</button>
+    `
+    tlElement = document.createElement('div')
+    tlElement.setAttribute("id", "task"+newTask.taskID)
+    tlElement.setAttribute("class", "task")
+    tlElement.innerHTML = newNode
+    tl = document.getElementById("taskList")
+    tl.appendChild(tlElement)
 }
 
 function loadTasks() {
