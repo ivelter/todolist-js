@@ -1,0 +1,92 @@
+body {
+    font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+    margin: auto;
+    background-color: #2B2D31;
+}
+
+h1, h2 {
+    color:beige
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    body {
+        width: auto;
+    }
+
+    #taskList {
+        border-style: none;
+    }
+
+    .task {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
+
+/* PC */
+@media (min-width: 481px) {
+    body {
+        width: 75%;
+    }
+}
+
+button {
+    background-color: #1E1F22;
+    color: aliceblue;
+    border: none;
+    padding: 1%;
+}
+
+button:hover {
+    background-color: #111214;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+#taskSection {
+    width: 100%;
+}
+
+.commands {
+    display: flex;
+    margin-bottom: 5%;
+}
+
+.commands > button{
+    margin-left: 5%;
+    margin-right: 5%;
+    flex-grow: 1;
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    background-color: #313338;
+    padding: 10px;
+    border-style: solid;
+    border-radius: 15px;
+    border-color: #2B2D31;
+}
+
+.checkbox {
+    margin-right: 3%;
+}
+
+textarea {
+    margin-right: 2%;
+    resize: none;
+    overflow: auto;
+    background-color: #383A40;
+    color: white;
+    flex-grow: 1;
+}
+

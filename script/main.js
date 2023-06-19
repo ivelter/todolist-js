@@ -1,4 +1,4 @@
-var taskList = []
+var taskList = Array()
 var currentTaskID = 0
 
 Array.prototype.pushTask = (...args) => {
@@ -7,9 +7,10 @@ Array.prototype.pushTask = (...args) => {
 }
 
 function addTask() {
-    newTask = {taskID:currentTaskID, taskDescription: ""}
+    newTask = {taskID:currentTaskID, taskDescription: "", done:false}
     currentTaskID++
-    taskList.pushTask(newTask)
+    taskList.push(newTask)
+    updateTasks()
 }
 
 function updateTasks() {
